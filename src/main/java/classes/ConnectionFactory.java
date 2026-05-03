@@ -1,0 +1,17 @@
+package classes;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConnectionFactory {
+
+    public static Connection getConnection() throws Exception {
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/avaliacao_mysql?useSSL=false&allowPublicKeyRetrieval=true",
+                "root",
+                "senha"
+        );
+    }
+}

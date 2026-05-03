@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: avaliacao_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: senha
+      MYSQL_DATABASE: seubanco
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/q5.sql:/docker-entrypoint-initdb.d/01-q5.sql:ro
+
+volumes:
+  mysql_data:
